@@ -1,0 +1,47 @@
+<footer class="v-footer dark">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h4 class="logo">V4 DEVLABS</h4>
+      <p class="description">
+        Code | Construct | Change
+      </p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/v4devlabs?igsh=bnF1aTdmZGI0dWxq"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/v4-codelabs/"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-column">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li routerLink="/careers">Careers</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h5>Technologies</h5>
+        <ul>
+          <li routerLink="/courses">Web Development</li>
+          <li routerLink="/courses">Mobile Apps</li>
+          <li routerLink="/courses">Cloud Services</li>
+        </ul>
+      </div>
+      <div class="footer-contact-form">
+        <h5>Contact Us</h5>
+        <form action="https://formspree.io/f/xdkdwgrj" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="footer-submit-btn">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {{ currentYear }} V4 Devlabs. All rights reserved.</span>
+    <span class="footer-credits"> | Powered by Legacy Group</span>
+  </div>
+</footer>

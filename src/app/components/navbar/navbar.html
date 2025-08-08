@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">V4   DEVLABS</div>
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <span>&#9776;</span>
+    </div>
+    <ul [class.active]="isMenuOpen">
+      <li><a routerLink="/">Home</a></li>
+<li><a routerLink="/courses">Courses</a></li>
+<li><a routerLink="/products">Products</a></li>
+
+    </ul>
+  </div>
+</nav>

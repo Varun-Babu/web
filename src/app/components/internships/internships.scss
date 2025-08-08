@@ -1,0 +1,258 @@
+.products-page {
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    background: #f7f9fc;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .left h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1.2;
+
+      span {
+        color: #5c6ac4;
+      }
+    }
+
+    .middle img {
+      width: 300px;
+      height: auto;
+    }
+
+    .right {
+      max-width: 400px;
+
+      .quote {
+        font-style: italic;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .signature {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .social-links p {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #888;
+      }
+    }
+  }
+
+  .courses-section {
+    padding: 4rem 2rem;
+    text-align: center;
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #666;
+    }
+
+    .course-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+
+      .course-card {
+        width: 320px;
+        padding: 2rem;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease;
+
+        &.active {
+          border-color: #5c6ac4;
+          box-shadow: 0 6px 12px rgba(92, 106, 196, 0.2);
+        }
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .course-title {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .course-duration {
+          font-size: 0.95rem;
+          color: #777;
+        }
+
+        .course-price {
+          font-size: 1.25rem;
+          font-weight: bold;
+          margin: 1rem 0;
+
+          span {
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: #999;
+          }
+        }
+
+        .course-features {
+          list-style: none;
+          padding: 0;
+          margin: 1rem 0;
+          text-align: left;
+
+          li {
+            margin: 0.5rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+
+            &::before {
+              content: '✔';
+              position: absolute;
+              left: 0;
+              color: #5c6ac4;
+            }
+          }
+        }
+
+        .enroll-btn {
+          margin-top: 1rem;
+          width: 100%;
+          font-weight: bold;
+
+          &.filled {
+            background-color: #ccc;
+            color: #555;
+          }
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 1024px) {
+    .hero-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+
+      .left h1 {
+        font-size: 2.2rem;
+      }
+
+      .middle img {
+        width: 250px;
+      }
+
+      .right {
+        max-width: 100%;
+
+        .quote {
+          font-size: 0.95rem;
+        }
+
+        .signature {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .courses-section {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+      }
+
+      .course-cards {
+        gap: 1.5rem;
+
+        .course-card {
+          width: 280px;
+          padding: 1.5rem;
+
+          .course-title {
+            font-size: 1.3rem;
+          }
+
+          .course-price {
+            font-size: 1.1rem;
+
+            span {
+              font-size: 0.85rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-section {
+      padding: 2rem 1rem;
+
+      .left h1 {
+        font-size: 1.8rem;
+      }
+
+      .middle img {
+        width: 200px;
+      }
+
+      .right .quote {
+        font-size: 0.9rem;
+      }
+
+      .right .signature {
+        font-size: 1rem;
+      }
+
+      .right .social-links p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .courses-section {
+      padding: 3rem 1rem;
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .course-cards {
+        flex-direction: column;
+        align-items: center;
+
+        .course-card {
+          width: 100%;
+          max-width: 320px;
+
+          .course-title {
+            font-size: 1.2rem;
+          }
+
+          .course-price {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

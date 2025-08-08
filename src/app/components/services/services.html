@@ -1,0 +1,12 @@
+<section id="services" class="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card" *ngFor="let service of services">
+        <div class="icon">💡</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

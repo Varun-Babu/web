@@ -1,0 +1,85 @@
+
+<section class="apps-showcase-section">
+  <div class="apps-header">
+    <h2>OUR APP RANGE</h2>
+    <br>
+    <p>Explore the latest from V4 DevLabs — Smart solutions for construction, transport, and more.</p>
+  </div>
+
+  <div class="apps-grid">
+    <!-- Construction Management App -->
+   <div class="app-card">
+  <div class="app-info">
+    <h3>Construction Manager</h3>
+    <p>Track work, upload site images, and manage your projects with ease.</p>
+    <p>Coming soon on</p>
+    <div class="store-buttons">
+      <img src="assets/icons/appstoree.svg" alt="App Store" />
+      <img src="assets/icons/playstore.png" alt="Play Store" />
+    </div>
+  </div>
+  <br>
+<div class="button-wrapper">
+  <a class="discover-btn" routerLink="/products/construction-manager">→</a>
+</div>
+
+
+</div>
+
+
+    <!-- Bus Tracking App -->
+    <div class="app-card">
+      <div class="coming-soon-overlay">Coming Soon</div>
+      <div class="app-info">
+        <h3>V4 Bus Tracker</h3>
+        <p>Track buses in real-time. Students, parents, and admins stay connected on the go.</p>
+        <p>Coming soon on</p>
+    <div class="store-buttons">
+      <img src="assets/icons/appstoree.svg" alt="App Store" />
+      <img src="assets/icons/playstore.png" alt="Play Store" />
+    </div>
+      </div>
+      <br>
+<div class="button-wrapper">
+  <a class="discover-btn" routerLink="/products/construction-manager">→</a>
+</div>
+    </div>
+
+    <!-- Gym App -->
+<div class="app-card">
+  <div class="coming-soon-overlay">Coming Soon</div>
+  <div class="app-info">
+    <h3>Gym Management from V4</h3>
+    <p>Innovative tools to simplify your workflow. Stay tuned for updates stay connected on the go.</p>
+    <p>Coming soon on</p>
+    <div class="store-buttons">
+      <img src="assets/icons/appstoree.svg" alt="App Store" />
+      <img src="assets/icons/playstore.png" alt="Play Store" />
+    </div>
+    </div>
+      <br>
+<div class="button-wrapper">
+  <a class="discover-btn" routerLink="/products/construction-manager">→</a>
+</div>
+  </div>
+</div>
+
+  
+
+  <div class="apps-cta">
+    <p>Ready to simplify your workflow? Download our apps and experience the V4 edge.</p>
+
+    <button class="get-started" (click)="showComingSoon()" [disabled]="loading" [class.clicked]="clicked"
+      [class.success]="showMessage">
+      <ng-container *ngIf="!loading && !showMessage">
+        <span>Explore More →</span>
+      </ng-container>
+      <ng-container *ngIf="loading">
+        <span class="loader"></span>
+      </ng-container>
+      <ng-container *ngIf="showMessage">
+        <span class="coming-soon-text">Coming Soon</span>
+      </ng-container>
+    </button>
+  </div>
+</section>

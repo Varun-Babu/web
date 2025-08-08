@@ -1,0 +1,144 @@
+.v-footer {
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 4rem 2rem 2rem;
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .footer-left {
+    flex: 1 1 300px;
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .description {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #cccccc;
+    }
+
+    .social-icons {
+      a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+        color: #ffffff;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #00bcd4;
+        }
+      }
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    flex: 2 1 500px;
+
+    .footer-column {
+      min-width: 150px;
+
+      h5 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 0.5rem;
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #00bcd4;
+            }
+          }
+          a{
+             margin-bottom: 0.5rem;
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #00bcd4;
+            }
+          }
+        }
+      }
+    
+
+    .footer-contact-form {
+      flex: 1 1 250px;
+
+      h5 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+
+        input,
+        textarea {
+          padding: 0.6rem;
+          border: none;
+          border-radius: 5px;
+          font-size: 0.9rem;
+        }
+
+        textarea {
+          min-height: 80px;
+          resize: vertical;
+        }
+
+        .footer-submit-btn {
+          background-color: #00bcd4;
+          color: #fff;
+          padding: 0.6rem 1rem;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #0097a7;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 0.9rem;
+    color: #999;
+
+    .footer-credits {
+      display: block;
+      margin-top: 0.3rem;
+    }
+  }
+}

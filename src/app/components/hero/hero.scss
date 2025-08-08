@@ -1,0 +1,145 @@
+.hero {
+  background-color: #f5f7fa;
+  padding: 80px 20px;
+  overflow: hidden;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+
+    .text-section,
+    .image-section {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s ease forwards;
+
+      &.image-section {
+        animation-delay: 0.3s;
+      }
+    }
+  }
+
+  .text-section {
+    flex: 1;
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      color: #111;
+
+      .highlight {
+        color: #00bcd4;
+      }
+    }
+
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 24px;
+      color: #555;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 24px;
+
+      li {
+        font-size: 18px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+
+        i {
+          color: #00bcd4;
+          margin-right: 8px;
+        }
+      }
+    }
+
+    .cta {
+      align-self: flex-end;
+      margin-top: auto;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      }
+    }
+  }
+
+  .image-section {
+    flex: 1;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    padding: 60px 16px;
+
+    .hero-content {
+      flex-direction: column;
+    }
+
+    .text-section {
+      h1 {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .features {
+        li {
+          font-size: 16px;
+        }
+      }
+
+      .cta {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .image-section {
+      display: none; 
+    }
+  }
+}

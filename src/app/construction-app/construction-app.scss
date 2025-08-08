@@ -1,0 +1,77 @@
+.construction-detail {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #222;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 60px;
+  }
+
+  .section-block {
+    margin-bottom: 60px;
+
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 20px;
+
+      li {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #444;
+      }
+    }
+
+    ol {
+      padding-left: 20px;
+
+      li {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #444;
+      }
+    }
+  }
+
+  .center {
+    text-align: center;
+
+    .btn-outline {
+      margin-top: 10px;
+      background: transparent;
+      border: 2px solid #000;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        background: #000;
+        color: #fff;
+      }
+    }
+  }
+}
+

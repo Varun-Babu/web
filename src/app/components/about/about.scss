@@ -1,0 +1,135 @@
+.section {
+  padding: 60px 20px;
+  overflow: hidden;
+
+  &:not(:last-child) {
+    margin-bottom: 40px; 
+  }
+  img {
+  width: 300px;
+  height: auto;
+}
+
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    .accent {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+  }
+
+  .text {
+    flex: 1 1 500px;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.7;
+
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: slideInLeft 1s ease forwards;
+
+    p {
+      margin-bottom: 15px;
+    }
+  }
+
+  .image {
+    flex: 1 1 400px;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: slideInLeft 1s ease forwards;
+    animation-delay: 0.3s;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+  }
+
+  &.reverse .container {
+    flex-direction: row-reverse;
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
+  @media (max-width: 1024px) {
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .text,
+    .image {
+      flex: 1 1 100%;
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
+    .text {
+      font-size: 1rem;
+    }
+
+    .image img {
+      max-width: 100%;
+    }
+
+    &.reverse .container {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 40px 16px;
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .text {
+      font-size: 0.95rem;
+    }
+
+    .image img {
+      max-width: 300px;
+    }
+
+    .image {
+      display: none;
+    }
+  }
+}
