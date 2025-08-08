@@ -1,77 +1,138 @@
-.construction-detail {
+.coming-soon {
+  background-color: #ffffff;
+  color: #111;
+  text-align: center;
   padding: 80px 20px;
-  max-width: 900px;
-  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   h1 {
-    font-size: 3rem;
-    text-align: center;
-    color: #222;
-    margin-bottom: 10px;
+    font-size: 48px;
+    margin-bottom: 40px;
+    color: #111;
   }
 
-  .subtitle {
-    text-align: center;
-    color: #666;
-    font-size: 1.2rem;
-    margin-bottom: 60px;
-  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
 
-  .section-block {
-    margin-bottom: 60px;
+    div {
+      background: #f5f7fa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      min-width: 100px;
 
-    h2 {
-      font-size: 1.8rem;
-      color: #333;
-      margin-bottom: 15px;
-    }
-
-    p {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.8;
-    }
-
-    ul {
-      list-style: disc;
-      padding-left: 20px;
-
-      li {
-        margin-bottom: 10px;
-        font-size: 1rem;
-        color: #444;
+      span {
+        display: block;
+        font-size: 36px;
+        font-weight: bold;
+        color: #00bcd4;
       }
-    }
 
-    ol {
-      padding-left: 20px;
-
-      li {
-        margin-bottom: 10px;
-        font-size: 1rem;
-        color: #444;
+      label {
+        font-size: 14px;
+        color: #555;
       }
     }
   }
 
-  .center {
-    text-align: center;
+  .notify {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #333;
+  }
 
-    .btn-outline {
-      margin-top: 10px;
-      background: transparent;
-      border: 2px solid #000;
+  .subscribe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+
+    input[type='email'] {
+      padding: 12px 16px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 280px;
+      max-width: 100%;
+      outline: none;
+
+      &:focus {
+        border-color: #00bcd4;
+        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+      }
+    }
+
+    button {
       padding: 12px 24px;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: #fff;
+      border: none;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
 
       &:hover {
-        background: #000;
-        color: #fff;
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       }
+    }
+  }
+
+  .contact {
+    font-size: 16px;
+    color: #555;
+
+    a {
+      color: #00bcd4;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+.countdown {
+    flex-wrap: nowrap; 
+    overflow-x: auto;  
+    gap: 12px;
+
+    div {
+      width: 80px;
+      min-width: unset;
+      padding: 16px;
+    }
+
+    span {
+      font-size: 28px;
+    }
+
+    label {
+      font-size: 12px;
+    }
+  }
+
+  .subscribe {
+    flex-direction: column;
+
+    input[type='email'],
+    button {
+      width: 100%;
+      max-width: 300px;
     }
   }
 }
 
+}

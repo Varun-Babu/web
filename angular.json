@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/devlabs-web-new",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
