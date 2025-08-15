@@ -13,8 +13,8 @@ export class Internships {
  courses = [
   {
     title: 'Python Bootcamp',
-    duration: '60 Days',
-    fee: 35000,
+    duration: '80 Days',
+    fee: 25000,
         status: 'active',
     features: [
       'Live Daily Classes',
