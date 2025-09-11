@@ -1,5 +1,6 @@
 <div class="products-page">
 
+  <!-- ========== Hero (unchanged) ========== -->
   <section class="hero-section">
     <div class="left">
       <h1><span>CODE</span><br><span>CONSTRUCT</span><br>CHANGE</h1>
@@ -20,33 +21,87 @@
     </div>
   </section>
 
-  <section class="courses-section">
-    <h2 class="section-title">Courses We Offer</h2>
+  <!-- ========== Hub Goals Overview ========== -->
+  <section class="hub-section goals-overview">
+    <h2 class="section-title">Our Hub — Mission & Goals</h2>
     <p class="section-subtitle">
-      Our courses are designed to provide hands-on experience and practical skills that prepare you for real-world
-      challenges.
+      We build college hubs to turn curious students into makers, collaborators and startup-ready engineers.
     </p>
-    <div class="course-cards">
-      <mat-card class="course-card" *ngFor="let course of courses; let i = index" [ngClass]="{ active: i === 1 }">
-        <h4 class="course-title">{{ course.title }}</h4>
-        <p class="course-duration">{{ course.duration }}</p>
-        <p class="course-price">₹{{ course.fee }}<span>/course</span></p>
-        <ul class="course-features">
-          <li *ngFor="let feature of course.features">{{ feature }}</li>
-        </ul>
 
-        <button mat-flat-button color="accent" class="enroll-btn" *ngIf="course.status === 'active'; else filledTemplate"
-          (click)="goToExternalLink()">
-          ENROLL NOW
-        </button>
-
-        <ng-template #filledTemplate>
-          <button mat-flat-button class="enroll-btn filled" disabled>
-            FILLED
-          </button>
-        </ng-template>
-
+    <div class="goals-grid">
+      <mat-card class="goal-card" *ngFor="let g of goals">
+        <div class="icon" aria-hidden="true">{{ g.icon }}</div>
+        <h3 class="goal-title">{{ g.title }}</h3>
+        <p class="goal-desc">{{ g.description }}</p>
       </mat-card>
     </div>
   </section>
+
+  <!-- ========== How it works (Activities) ========== -->
+  <section class="hub-section activities">
+    <h2 class="section-title">How the Hub Works</h2>
+    <br>
+    <div class="activities-list">
+      <mat-card class="activity-card" *ngFor="let act of activities">
+        <h4 class="activity-title">{{ act.title }}</h4>
+        <p class="activity-desc">{{ act.desc }}</p>
+        <p class="activity-bullet"><strong>Frequency:</strong> {{ act.frequency }}</p>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- ========== Benefits & Outcomes ========== -->
+  <section class="hub-section benefits">
+    <h2 class="section-title">Benefits for Students & Colleges</h2>
+    <br>
+    <div class="benefits-row">
+      <div class="benefit" *ngFor="let b of benefits">
+        <h4>{{ b.title }}</h4>
+        <p>{{ b.text }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Pilot Timeline & Join CTA ========== -->
+<section class="hub-section roadmap">
+  <h2 class="section-title">Ways to Get Involved</h2>
+  <p class="section-subtitle">Different roles — one mission. Pick how you want to contribute.</p>
+
+  <div class="roadmap-steps">
+    <div class="road-step"
+      *ngFor="let step of involvementSteps; let i = index"
+      [ngClass]="{ 'reverse': i % 2 === 1 }"
+      [attr.aria-label]="'Step ' + (i + 1) + ': ' + step.title">
+
+      <div class="circle" aria-hidden="true">{{ i + 1 }}</div>
+
+      <svg class="connector" viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,50 C40,10 80,10 120,50" fill="none" stroke="rgba(92,106,196,0.12)" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+
+      <div class="content">
+        <h4 class="title">{{ step.title }}</h4>
+        <p class="desc">{{ step.desc }}</p>
+        <div class="controls">
+          <button mat-stroked-button color="primary" class="inactive-btn" disabled>{{ step.cta }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-join">
+    <h3>Be part of the journey</h3>
+    <p class="cta-sub">Ready to start? Tell us how you want to help.</p>
+    <button mat-flat-button color="primary" >Get Started</button>
+    <p class="email-note">Or email <a href="mailto:contact@v4devlabs.com">contact@v4devlabs.com</a></p>
+  </div>
+</section>
+
+<!-- 
+  ========== Contact & Mentor CTA ==========
+  <section class="hub-section contact">
+    <h4>Want to mentor or collaborate?</h4>
+    <p>Mentors, industry partners and colleges who want to partner — email us at <a href="mailto:hello@v4devlabs.com">hello@v4devlabs.com</a></p>
+  </section> -->
+
 </div>

@@ -33,6 +33,7 @@
     "@angular/ssr": "^20.1.4",
     "@fortawesome/fontawesome-free": "^7.0.0",
     "express": "^5.1.0",
+    "firebase": "^12.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

@@ -1,20 +1,301 @@
-<section class="coming-soon">
-  <h1>Coming Soon</h1>
+<section class="landing">
 
-  <div class="countdown">
-    <div><span>{{ countdown.days }}</span><label>Days</label></div>
-    <div><span>{{ countdown.hours }}</span><label>Hours</label></div>
-    <div><span>{{ countdown.minutes }}</span><label>Minutes</label></div>
-    <div><span>{{ countdown.seconds }}</span><label>Seconds</label></div>
-  </div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1 class="logo">NextBrick</h1>
+        <p class="tagline">Free project management for builders + a marketplace to find verified contractors, vendors
+          and construction services. Get found, get trusted, and get more leads.</p>
 
-  <p class="notify">Get notified when the app goes live:</p>
-<form class="subscribe" action="https://formspree.io/f/xpwlokrk" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Subscribe</button>
-  </form>
+        <div class="cta-row">
+          <a class="btn primary" (click)="scrollTo('company-signup')">List Your Company 4 Free</a>
+        </div>
 
-  <p class="contact">If you have any questions, please contact us at:<br>
-    <a>v4devlabs@gmail.com</a>
-  </p>
-</section>
+        <ul class="trust-list">
+          <li>Free PM tools for companies</li>
+          <li>Verified profiles & priority leads</li>
+          <li>Order plans from in-house architects</li>
+        </ul>
+
+        <p class="hero-note">Launch offer: first 100 companies get a discounted Verified badge and priority onboarding.
+          Pre-register now to reserve your slot.</p>
+      </div>
+
+      <div class="hero-right">
+        <div class="card countdown-card" aria-labelledby="launch-heading">
+          <h2 id="launch-heading">Launch Countdown</h2>
+
+          <div class="countdown" aria-live="polite">
+            <div><span class="num">{{ countdown.days }}</span><label>Days</label></div>
+            <div><span class="num">{{ countdown.hours }}</span><label>Hours</label></div>
+            <div><span class="num">{{ countdown.minutes }}</span><label>Minutes</label></div>
+            <div><span class="num">{{ countdown.seconds }}</span><label>Seconds</label></div>
+          </div>
+
+          <p class="notify">Get notified when the app goes live — we’ll email you and give priority onboarding to early
+            companies.</p>
+
+          <!-- Email subscribe -->
+          <form #emailForm="ngForm" (ngSubmit)="subscribeEmail(emailModel)" class="subscribe" (ngSubmit)="false">
+            <input name="email" [(ngModel)]="emailModel" type="email" placeholder="Enter your email"
+              aria-label="Email for notification" required>
+            <button type="button" class="btn pill" (click)="subscribeEmail(emailModel)"
+              [disabled]="emailSubmitting">Notify Me</button>
+          </form>
+
+          <div *ngIf="emailSuccess" style="color:green; font-size:13px; margin-top:6px;">Thanks — you’ll be notified.
+          </div>
+          <div *ngIf="emailError" style="color:#b00020; font-size:13px; margin-top:6px;">{{ emailError }}</div>
+
+
+          <p class="muted small">Prefer to list your company now? Use the pre-registration below — we'll create your
+            listing and reach out.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section id="features" class="section features compact">
+    <div class="container">
+      <h2>What NextBrick Offers</h2>
+      <p class="section-sub">Everything a builder, vendor or homeowner needs — from project tracking to lead generation
+        and verified design services. Designed for field teams and business owners.</p>
+
+      <div class="features-grid compact-grid">
+        <article class="feature">
+          <h3>Free Project Management</h3>
+          <p>Create projects and milestones, upload progress images from site, assign tasks to team members and keep
+            clients informed with status updates and chat.</p>
+        </article>
+
+        <article class="feature">
+          <h3>Verified Marketplace</h3>
+          <p>Search and compare builders, architects and suppliers with ratings, verified credentials and portfolio
+            images — shortlist and request quotes quickly.</p>
+        </article>
+
+        <article class="feature">
+          <h3>In-house Design Services</h3>
+          <p>Order floorplans, structural sketches or 3D renders from our vetted architects. Fast turnaround and priced
+            per-deliverable for transparency.</p>
+        </article>
+
+        <article class="feature">
+          <h3>Ads & Promotions</h3>
+          <p>Boost visibility with sponsored slots, promoted projects and targeted local ads — only when you want them,
+            not during daily work.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="section how compact">
+    <div class="container">
+      <h2>How it Works</h2>
+      <p class="section-sub">Three simple steps to go from browsing to building.</p>
+
+      <ol class="how-steps compact-list">
+        <li><span class="content"><strong>Companies</strong> register and upload portfolio — manage projects in-app and
+            respond to leads.</span></li>
+        <li><span class="content"><strong>Clients</strong> browse, compare and request quotes — optionally order plans
+            from our architects.</span></li>
+        <li><span class="content"><strong>NextBrick</strong> verifies profiles, distributes leads and provides paid
+            promotional tools for growth.</span></li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- MARKETPLACE PREVIEW -->
+  <section id="marketplace" class="section marketplace compact">
+    <div class="container">
+      <h2>Marketplace Preview</h2>
+      <p class="section-sub">A snapshot of the kinds of companies that will be on NextBrick at launch. We populate the
+        marketplace with pre-registered companies so users find real options immediately.</p>
+
+      <div class="market-grid tight-grid">
+        <div class="market-card">
+          <div class="thumb" aria-hidden="true"></div>
+          <h4>Legacy Builders</h4>
+          <p class="muted">Residential | 10+ years | Verified</p>
+        </div>
+
+        <div class="market-card">
+          <div class="thumb" aria-hidden="true"></div>
+          <h4>Urban Interiors</h4>
+          <p class="muted">Interiors & finishes | 300+ projects</p>
+        </div>
+
+        <div class="market-card">
+          <div class="thumb" aria-hidden="true"></div>
+          <h4>SteelPro Suppliers</h4>
+          <p class="muted">Materials & rentals | Fast delivery</p>
+        </div>
+
+        <div class="market-card">
+          <div class="thumb" aria-hidden="true"></div>
+          <h4>GreenScape Landscapes</h4>
+          <p class="muted">Landscaping & exteriors</p>
+        </div>
+      </div>
+
+      <p class="section-sub">Want your company listed here? Pre-register to get priority placement and onboarding help.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMPANY SIGNUP -->
+  <section id="company-signup" class="section signup compact">
+    <div class="container narrow">
+      <h2>Get Found — Pre-register Your Company</h2>
+      <p class="section-sub">We’ll create your listing, upload basic details and contact you for materials — no app
+        required. Early adopters receive launch day visibility and discounted Verified status.</p>
+      <form #companyForm="ngForm" (ngSubmit)="submitCompany(companyForm.value)" class="company-form">
+        <div class="form-grid compact-grid">
+          <input name="companyName" ngModel placeholder="Company Name" required>
+          <input name="contactName" ngModel placeholder="Contact Person" required>
+          <input name="phone" ngModel placeholder="Phone (WhatsApp)" required>
+          <input name="email" ngModel type="email" placeholder="Email" required>
+          <input name="city" ngModel placeholder="City / Service Area" required>
+          <select name="serviceType" ngModel required>
+            <option value="">Select Service Type</option>
+            <option>General Contractor</option>
+            <option>Architect</option>
+            <option>Interior Designer</option>
+            <option>Material Supplier</option>
+            <option>Structural Engineer</option>
+            <option>Civil Engineer</option>
+            <option>Landscape Designer</option>
+            <option>MEP Contractor (Mechanical, Electrical, Plumbing)</option>
+            <option>HVAC Specialist</option>
+            <option>Roofing Contractor</option>
+            <option>Painting & Finishing Contractor</option>
+            <option>Flooring & Tiling Specialist</option>
+            <option>Carpentry & Woodwork</option>
+            <option>Steel Fabrication</option>
+            <option>Glass & Aluminum Works</option>
+            <option>Electrical Contractor</option>
+            <option>Plumbing Contractor</option>
+            <option>Waterproofing Specialist</option>
+            <option>Renovation & Remodeling Services</option>
+            <option>Demolition Contractor</option>
+            <option>Equipment Rental</option>
+            <option>Surveyor</option>
+            <option>Project Management Consultancy</option>
+            <option>Other</option>
+
+          </select>
+        </div>
+
+        <div class="form-actions compact-actions">
+          <button type="submit" class="btn primary large" [disabled]="companySubmitting">Pre-register My
+            Company</button>
+        </div>
+
+        <div *ngIf="companySuccess" class="small" style="color:green; margin-top:8px;">Thanks — we'll contact you
+          shortly.</div>
+        <div *ngIf="companyError" class="small" style="color:#b00020; margin-top:8px;">{{companyError}}</div>
+      </form>
+
+    </div>
+  </section>
+
+
+
+  <!-- PRICING / VERIFIED -->
+  <section id="pricing" class="section pricing compact">
+    <div class="container">
+      <h2>Early Pricing & Verified Perks</h2>
+      <p class="section-sub">Simple, transparent pricing at launch — upgrade when you need visibility.</p>
+
+      <div class="pricing-grid tight-grid">
+        <div class="price">
+          <h3>Free</h3>
+          <p>Basic profile, free PM tools, list on marketplace. Ideal for daily operations.</p>
+        </div>
+
+        <div class="price featured">
+          <h3>Verified (Early)</h3>
+          <p>Priority listing, verified badge, profile analytics, and lead prioritization — launch discount for early
+            adopters.</p>
+        </div>
+
+        <div class="price">
+          <h3>Ads & Promoted</h3>
+          <p>Self-serve promoted listings, featured slots and feed ads when you need more leads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FAQ -->
+  <section id="faq" class="section faq compact">
+    <div class="container narrow">
+      <h2>FAQ</h2>
+
+      <details open>
+        <summary>Is NextBrick free?</summary>
+        <p>Yes — project management and marketplace listings are completely free. We only charge for optional upgrades
+          like Verified badges, promoted listings, and in-app ads.</p>
+      </details>
+
+      <details>
+        <summary>How do I get Verified?</summary>
+        <p>Upload your business documents, license, and sample project photos. Once our team reviews and approves, your
+          profile will receive a Verified badge and priority visibility.</p>
+      </details>
+
+      <details>
+        <summary>What is the benefit of being Verified?</summary>
+        <p>Verified companies appear at the top of searches, get priority leads, and build trust with clients. This
+          increases your chances of winning projects and growing faster.</p>
+      </details>
+
+      <details>
+        <summary>Can homeowners or clients use NextBrick?</summary>
+        <p>Yes. Clients can browse companies, check portfolios, request quotes, and compare builders, architects, or
+          vendors all in one place.</p>
+      </details>
+
+      <details>
+        <summary>What types of companies can join?</summary>
+        <p>General contractors, architects, interior designers, suppliers, and other construction-related service
+          providers are welcome to register on NextBrick.</p>
+      </details>
+
+      <details>
+        <summary>How do ads and promotions work?</summary>
+        <p>You can boost your profile visibility with promoted listings or targeted ads. These appear in featured spots
+          across the marketplace and help you get more leads when needed.</p>
+      </details>
+
+      <details>
+        <summary>Can I showcase my past projects?</summary>
+        <p>Yes. You can upload photos, descriptions, and milestones of completed projects to build a portfolio that
+          clients can view before contacting you.</p>
+      </details>
+
+      <details>
+        <summary>Which areas does NextBrick cover?</summary>
+        <p>Initially, NextBrick focuses on regional markets in India. Companies can list their city or service areas so
+          clients can find local providers easily.</p>
+      </details>
+
+      <details>
+        <summary>How does NextBrick connect clients and companies?</summary>
+        <p>Clients search or browse companies on the marketplace, view their profiles and projects, and directly send
+          requests for quotes or services through the app.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to install anything?</summary>
+        <p>No. NextBrick is a mobile and web app. Simply sign up, create your company profile, and start managing
+          projects or connecting with clients.</p>
+      </details>
+    </div>
+  </section>

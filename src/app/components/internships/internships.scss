@@ -45,100 +45,278 @@
     }
   }
 
-  .courses-section {
-    padding: 4rem 2rem;
-    text-align: center;
+  /* ---------------- Hub Sections (replaces courses-section) ---------------- */
+  .hub-section {
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2.25rem;
+    background: #ffffff;
 
+    /* Center main headings & subheadings */
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 0.5rem;
+      color: #222;
+      text-align: center; /* centered */
     }
 
     .section-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
       color: #666;
+      text-align: center; /* centered */
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .course-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+    /* Reveal animation helpers (used by IntersectionObserver in TS) */
+    .anim-hidden {
+      opacity: 0;
+      transform: translateY(18px);
+      will-change: opacity, transform;
+      transition: opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1);
+    }
 
-      .course-card {
-        width: 320px;
-        padding: 2rem;
-        border: 1px solid #ddd;
+    .anim-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* allow children to stagger via CSS variable set by TS */
+    [style--reveal-order] {
+      transition-delay: calc(var(--reveal-order, 0) * 90ms);
+    }
+
+    /* Goals overview grid */
+    &.goals-overview {
+      .goals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+      }
+
+      .goal-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
         border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-        transition: transform 0.3s ease;
+        box-shadow: 0 6px 14px rgba(16, 24, 40, 0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        text-align: center; /* centered subheading/title */
+        background: #fafbff;
 
-        &.active {
-          border-color: #5c6ac4;
-          box-shadow: 0 6px 12px rgba(92, 106, 196, 0.2);
+        .icon {
+          font-size: 26px;
+          margin-bottom: 0.6rem;
+        }
+
+        .goal-title {
+          font-size: 1.1rem;
+          margin: 0 0 0.4rem;
+          font-weight: 600;
+          color: #222;
+          text-align: center; /* ensure centered */
+        }
+
+        .goal-desc {
+          color: #444;
+          font-size: 0.95rem;
+          margin: 0;
         }
 
         &:hover {
-          transform: translateY(-5px);
+          transform: translateY(-6px);
+          box-shadow: 0 10px 30px rgba(92, 106, 196, 0.12);
+          border-color: #5c6ac4;
+        }
+      }
+    }
+
+    /* Activities / rhythm of the hub */
+    &.activities {
+      .activities-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+      }
+
+      .activity-card {
+        padding: 1.2rem;
+        border-radius: 12px;
+        border: 1px solid #eee;
+        background: linear-gradient(180deg, #fff, #fbfdff);
+        box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+        text-align: center; /* centered title/desc */
+
+        .activity-title {
+          margin: 0 0 0.4rem;
+          font-weight: 700;
+          font-size: 1rem;
+          color: #222;
+          text-align: center; /* centered */
         }
 
-        .course-title {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .course-duration {
+        .activity-desc {
+          margin: 0 0 0.6rem;
           font-size: 0.95rem;
-          color: #777;
+          color: #444;
         }
 
-        .course-price {
-          font-size: 1.25rem;
-          font-weight: bold;
-          margin: 1rem 0;
+        .activity-bullet {
+          font-size: 0.9rem;
+          color: #666;
+          margin: 0;
+        }
+      }
+    }
 
-          span {
-            font-weight: normal;
-            font-size: 0.9rem;
-            color: #999;
-          }
+    /* Benefits */
+    &.benefits {
+      .benefits-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center; /* center row on wide screens */
+      }
+
+      .benefit {
+        flex: 1 1 260px;
+        padding: 1.25rem;
+        border-radius: 10px;
+        background: #f6f8ff;
+        border: 1px solid rgba(92,106,196,0.06);
+        box-shadow: 0 4px 12px rgba(16,24,40,0.03);
+        text-align: center; /* center headings/text inside */
+
+        h4 {
+          margin: 0 0 0.5rem;
+          font-size: 1rem;
+          color: #222;
         }
 
-        .course-features {
-          list-style: none;
-          padding: 0;
-          margin: 1rem 0;
-          text-align: left;
+        p {
+          margin: 0;
+          color: #4a4a4a;
+          font-size: 0.95rem;
+        }
+      }
+    }
 
+    /* Inactive button style (visual hover but disabled behavior) */
+    .inactive-btn {
+      pointer-events: none; /* ensure no clicks */
+      opacity: 1 !important; /* visually enabled */
+      background-color: #fff;
+      color: #5c6ac4;
+      border: 1px solid #5c6ac4;
+
+      &:hover {
+        background-color: #5c6ac4;
+        color: #fff;
+        cursor: default; /* keep non-click cursor */
+      }
+
+      &:disabled {
+        /* override Angular Material disabled styling */
+        color: #5c6ac4 !important;
+        background-color: #fff !important;
+        border: 1px solid #5c6ac4 !important;
+      }
+    }
+
+    /* Timeline + CTA (kept for backwards compatibility) */
+    &.timeline-cta {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.5rem;
+      align-items: start;
+
+      .timeline {
+        ol {
+          margin: 0;
+          padding-left: 1.15rem;
           li {
-            margin: 0.5rem 0;
-            position: relative;
-            padding-left: 1.2rem;
+            margin: 0.75rem 0;
+            font-size: 0.98rem;
+            color: #444;
 
-            &::before {
-              content: '✔';
-              position: absolute;
-              left: 0;
-              color: #5c6ac4;
+            strong {
+              color: #222;
             }
           }
         }
+      }
 
-        .enroll-btn {
-          margin-top: 1rem;
+      .cta {
+        padding: 1rem;
+        border-left: 1px solid rgba(0, 0, 0, 0.04);
+
+        h3 {
+          margin: 0 0 0.5rem;
+          font-size: 1.05rem;
+        }
+
+        p {
+          margin: 0 0 1rem;
+          color: #555;
+          font-size: 0.95rem;
+        }
+
+        button {
           width: 100%;
-          font-weight: bold;
+          font-weight: 700;
+          padding: 0.8rem 1rem;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          background: #5c6ac4;
+          color: #fff;
+          box-shadow: 0 8px 20px rgba(92,106,196,0.16);
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
 
-          &.filled {
-            background-color: #ccc;
-            color: #555;
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(92,106,196,0.18);
           }
+        }
+      }
+    }
+
+    /* Contact small */
+    &.contact {
+      text-align: center;
+      padding: 1.5rem 0;
+
+      h4 {
+        margin: 0 0 0.5rem;
+        font-size: 1rem;
+        color: #222;
+      }
+
+      p {
+        margin: 0;
+        color: #555;
+        a {
+          color: #5c6ac4;
+          text-decoration: none;
+          font-weight: 600;
         }
       }
     }
   }
 
+  /* ---------------- General responsive tweaks (re-using your breakpoints) ---------------- */
+  @media (max-width: 1400px) {
+    .hero-section {
+      .left h1 { font-size: clamp(2.6rem, 3.2vw, 3rem); }
+      .middle img { width: 280px; }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .hub-section { padding: 2.5rem 1.75rem; }
+    .roadmap { padding: 2.5rem 1.5rem; }
+  }
 
   @media (max-width: 1024px) {
     .hero-section {
@@ -168,91 +346,223 @@
       }
     }
 
-    .courses-section {
-      .section-title {
-        font-size: 2rem;
-      }
+    /* hub sections stack more simply on tablet */
+    .hub-section {
+      padding: 2.25rem 1.5rem;
 
-      .section-subtitle {
-        font-size: 1rem;
-      }
-
-      .course-cards {
-        gap: 1.5rem;
-
-        .course-card {
-          width: 280px;
-          padding: 1.5rem;
-
-          .course-title {
-            font-size: 1.3rem;
-          }
-
-          .course-price {
-            font-size: 1.1rem;
-
-            span {
-              font-size: 0.85rem;
-            }
-          }
+      &.timeline-cta {
+        grid-template-columns: 1fr;
+        .cta {
+          border-left: none;
+          margin-top: 1rem;
+          padding-left: 0;
         }
+      }
+
+      &.goals-overview .goals-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      &.activities .activities-list {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+  }
+
+  @media (max-width: 880px) {
+    .hub-section { padding: 1.8rem 1rem; }
+
+    .hero-section { padding: 2rem 1rem; .middle img { width: 220px; } }
+
+    /* roadmap adjustments for small screens */
+    .roadmap {
+      padding: 2rem 1rem;
+
+      .roadmap-steps {
+        gap: 1.2rem;
+      }
+
+      .road-step {
+        gap: 0.9rem;
+
+        .connector { display: none; } /* hide connectors on smaller widths */
+        &.reverse { flex-direction: row; } /* stack circle left on mobile for consistency */
+
+        .content {
+          padding: 0.9rem;
+          text-align: center; /* center content on small screens for clarity */
+        }
+
+        .circle { width: 40px; height: 40px; font-size: 0.95rem; }
       }
     }
   }
 
   @media (max-width: 600px) {
+    .hub-section {
+      padding: 1.5rem 1rem;
+      .section-title { font-size: 1.4rem; }
+      .section-subtitle { font-size: 0.95rem; }
+
+      .goals-grid { gap: 0.9rem; }
+      .benefits-row { gap: 0.75rem; }
+
+      .goal-card, .activity-card, .benefit {
+        padding: 1rem;
+        text-align: center;
+      }
+    }
+
     .hero-section {
       padding: 2rem 1rem;
 
-      .left h1 {
-        font-size: 1.8rem;
-      }
+      .left h1 { font-size: 1.8rem; }
+      .middle img { width: 200px; }
+      .right .quote { font-size: 0.9rem; }
+      .right .signature { font-size: 1rem; }
+      .right .social-links p { font-size: 0.8rem; }
+    }
+  }
 
-      .middle img {
-        width: 200px;
-      }
-
-      .right .quote {
-        font-size: 0.9rem;
-      }
-
-      .right .signature {
-        font-size: 1rem;
-      }
-
-      .right .social-links p {
-        font-size: 0.8rem;
-      }
+  @media (max-width: 480px) {
+    .hub-section {
+      padding: 1.1rem 0.8rem;
+      .section-title { font-size: 1.25rem; }
+      .section-subtitle { font-size: 0.9rem; }
+      .goal-card, .activity-card, .benefit { padding: 0.85rem; }
     }
 
-    .courses-section {
-      padding: 3rem 1rem;
+    .roadmap {
+      padding: 1.2rem 0.6rem;
 
-      .section-title {
-        font-size: 1.8rem;
-      }
-
-      .section-subtitle {
-        font-size: 0.95rem;
-      }
-
-      .course-cards {
-        flex-direction: column;
-        align-items: center;
-
-        .course-card {
-          width: 100%;
-          max-width: 320px;
-
-          .course-title {
-            font-size: 1.2rem;
-          }
-
-          .course-price {
-            font-size: 1rem;
-          }
-        }
-      }
+      .road-step .content { padding: 0.75rem; }
+      .road-step .title { font-size: 1rem; }
+      .road-step .desc { font-size: 0.9rem; }
     }
   }
 }
+
+/* add to your component scss (merge with existing .products-page if needed) */
+.roadmap {
+  padding: 3rem 2rem;
+  background: #fff;
+  border-radius: 12px;
+
+  .section-title { font-size: 2rem; margin-bottom: 0.2rem; text-align: center; }
+  .section-subtitle { color: #666; margin-bottom: 1.5rem; text-align: center; }
+
+  .roadmap-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .road-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    /* default: circle on left, content on right */
+       .circle {
+      min-width: 46px;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #5c6ac4;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(92,106,196,0.14);
+      z-index: 3;
+      flex-shrink: 0;
+    }
+
+    .connector {
+      width: 120px;
+      height: 60px;
+      flex-shrink: 0;
+      margin-left: -8px; /* nudge under circle */
+      margin-right: -8px;
+      z-index: 1;
+    }
+
+    .content {
+      background: linear-gradient(180deg,#fbfdff,#fff);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      border: 1px solid #eee;
+      box-shadow: 0 8px 20px rgba(16,24,40,0.04);
+      flex: 1 1 auto;
+
+      .title { margin: 0 0 0.35rem; font-size: 1.05rem; color: #222; font-weight: 600; }
+      .desc { margin: 0 0 0.8rem; color: #555; font-size: 0.95rem; line-height: 1.4; }
+      .controls { button { font-weight: 700; border-radius: 8px; } }
+    }
+
+    /* alternate layout for even items: flip circle and content */
+    &.reverse {
+      flex-direction: row-reverse;
+
+      .connector {
+        transform: scaleX(-1); /* flip the curve */
+      }
+
+      .content { text-align: left; }
+    }
+  }
+
+  /* final CTA */
+  .cta-join {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1.25rem;
+    border-top: 1px dashed rgba(0,0,0,0.06);
+
+    h3 { margin: 0 0 0.5rem; font-size: 1.15rem; color: #222; }
+    .cta-sub { color: #555; margin-bottom: 0.75rem; }
+    button { font-weight: 700; padding: 0.7rem 1.25rem; border-radius: 8px; }
+    .email-note { margin-top: 0.6rem; color: #777; a { color: #5c6ac4; font-weight: 600; text-decoration: none; } }
+  }
+
+  /* responsive rules */
+  @media (max-width: 880px) {
+    .road-step {
+      gap: 0.9rem;
+
+      .connector { display: none; } /* hide connectors on smaller widths */
+      &.reverse { flex-direction: row; } /* stack circle left on mobile for consistency */
+
+      .content {
+        padding: 0.9rem;
+      }
+
+      .circle { width: 40px; height: 40px; font-size: 0.95rem; }
+    }
+
+    .roadmap-steps { gap: 1.2rem; }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+
+    .section-title { font-size: 1.5rem; }
+    .section-subtitle { font-size: 0.95rem; }
+
+    .road-step .content .title { font-size: 1rem; }
+    .road-step .content .desc { font-size: 0.9rem; }
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .anim-hidden, .anim-visible, [style--reveal-order] {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+

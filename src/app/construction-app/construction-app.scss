@@ -1,138 +1,616 @@
-.coming-soon {
-  background-color: #ffffff;
+/* construction-app.scss - responsive revision */
+
+/* Host */
+:host {
+  display: block;
+  background: #ffffff;
   color: #111;
-  text-align: center;
-  padding: 80px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+  box-sizing: border-box;
+}
 
-  h1 {
-    font-size: 48px;
-    margin-bottom: 40px;
-    color: #111;
+/* Box sizing helper */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* --- layout utilities --- */
+.container {
+  width: min(1180px, 94%);
+  margin: 0 auto;
+  padding: 18px 0;
+}
+
+/* fluid typography */
+.logo {
+  font-size: clamp(22px, 3.2vw, 32px);
+}
+
+.section h2 {
+  font-size: clamp(20px, 2.2vw, 28px);
+}
+
+p,
+li,
+.feature p {
+  font-size: clamp(13px, 1.4vw, 15px);
+}
+
+/* reduce vertical spacing on small screens */
+.section {
+  padding: clamp(18px, 3.2vh, 36px) 0;
+}
+
+.section.compact {
+  padding: clamp(12px, 2.5vh, 20px) 0;
+}
+
+.section-sub {
+  color: #555;
+  max-width: 860px;
+  margin: 8px auto 14px;
+  text-align: center;
+}
+
+/* Center all section headings */
+.section h2 {
+  text-align: center;
+  margin: 6px 0 6px;
+  color: #0b3b3e;
+  font-weight: 700;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+  padding-top: 18px;
+  padding-bottom: 12px;
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 18px;
+    align-items: start;
   }
 
-  .countdown {
+  .hero-left {
+    .tagline {
+      margin-bottom: 10px;
+      color: #333;
+      max-width: 640px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .trust-list {
+      margin-top: 8px;
+      color: #666;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .hero-note {
+      color: #666;
+      margin-top: 10px;
+      font-size: 13px;
+      max-width: 600px;
+    }
+  }
+
+  .hero-right {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 40px;
+    align-items: flex-start;
 
-    div {
-      background: #f5f7fa;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      min-width: 100px;
-
-      span {
-        display: block;
-        font-size: 36px;
-        font-weight: bold;
-        color: #00bcd4;
-      }
-
-      label {
-        font-size: 14px;
-        color: #555;
-      }
-    }
-  }
-
-  .notify {
-    font-size: 18px;
-    margin-bottom: 16px;
-    color: #333;
-  }
-
-  .subscribe {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-
-    input[type='email'] {
-      padding: 12px 16px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      width: 280px;
-      max-width: 100%;
-      outline: none;
-
-      &:focus {
-        border-color: #00bcd4;
-        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
-      }
-    }
-
-    button {
-      padding: 12px 24px;
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      }
-    }
-  }
-
-  .contact {
-    font-size: 16px;
-    color: #555;
-
-    a {
-      color: #00bcd4;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 32px;
-  }
-
-.countdown {
-    flex-wrap: nowrap; 
-    overflow-x: auto;  
-    gap: 12px;
-
-    div {
-      width: 80px;
-      min-width: unset;
+    .card.countdown-card {
       padding: 16px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 26px rgba(12, 36, 44, 0.06);
+      text-align: center;
+      min-width: 280px;
+      /* slightly smaller min on desktop so layout remains balanced */
+      max-width: 100%;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      box-sizing: border-box;
     }
 
-    span {
-      font-size: 28px;
+    /* countdown row (keeps items inside card) */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0 12px;
+      flex-wrap: nowrap;
+      overflow: hidden;
     }
 
-    label {
+    .countdown>div {
+      background: #f5f7fa;
+      padding: 10px 12px;
+      border-radius: 8px;
+      min-width: 64px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .countdown .num {
+      display: block;
+      font-size: clamp(18px, 2.6vw, 22px);
+      font-weight: 800;
+      color: #007e88;
+      line-height: 1;
+    }
+
+    .countdown label {
       font-size: 12px;
+      color: #555;
+      margin-top: 6px;
     }
-  }
 
-  .subscribe {
-    flex-direction: column;
+    .notify {
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 10px;
+    }
 
-    input[type='email'],
-    button {
-      width: 100%;
-      max-width: 300px;
+    .muted {
+      color: #777;
+      font-size: 12px;
+      margin-top: 8px;
     }
   }
 }
 
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  text-align: center;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(79, 172, 254, 0.14);
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(79, 172, 254, 0.16);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #007e88;
+  border: 1px solid rgba(0, 126, 136, 0.08);
+}
+
+.btn.pill {
+  border-radius: 999px;
+  padding: 8px 14px;
+}
+
+.btn.large {
+  padding: 12px 18px;
+  font-size: 15px;
+}
+
+/* Sections layout - features/pricing etc */
+/* use responsive auto-fit grid so cards wrap naturally */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.pricing-grid,
+.pricing-grid.tight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+/* card base style + hover effect */
+.feature,
+.market-card,
+.dev-card,
+.price,
+.test-grid blockquote {
+  background: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  will-change: transform;
+}
+
+.feature:hover,
+.market-card:hover,
+.dev-card:hover,
+.price:hover,
+.test-grid blockquote:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(12, 36, 44, 0.08);
+  border-color: rgba(0, 126, 136, 0.06);
+}
+
+.feature {
+  background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
+  min-height: 110px;
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #0b3b3e;
+  }
+}
+
+/* How section adjustments already present: keep them, they are responsive */
+#how {
+  .container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .how-steps {
+    margin: 12px auto 0;
+    padding-left: 0;
+    list-style: none;
+    max-width: 780px;
+    width: 100%;
+    counter-reset: step;
+  }
+
+  .how-steps li {
+    position: relative;
+    display: block;
+    padding: 14px 18px;
+    margin: 10px 0;
+    background: linear-gradient(180deg, #fff, #fbfdff);
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(12, 36, 44, 0.04);
+    font-size: 15px;
+    color: #213033;
+    /* reserve space on the left for the badge while keeping content centered */
+    padding-left: 80px;
+    /* desktop default: 80px allows room for badge */
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  /* content wrapper: centers content within remaining width */
+  .how-steps li .content {
+    display: block;
+    max-width: calc(100% - 96px);
+    /* slightly less than padding-left to keep breathing room */
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* numeric badge */
+  .how-steps li::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #00bcd4;
+    color: #fff;
+    font-weight: 700;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 188, 212, 0.12);
+    font-size: 14px;
+    z-index: 2;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 600px) {
+    .how-steps li {
+      padding-left: 60px;
+      /* less space on small screens */
+      padding-right: 12px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .how-steps li .content {
+      max-width: calc(100% - 72px);
+    }
+
+    .how-steps li::before {
+      left: 12px;
+      width: 30px;
+      height: 30px;
+      font-size: 13px;
+    }
+  }
+}
+
+/* Marketplace */
+.market-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.market-card {
+  width: 100%;
+  max-width: 260px;
+  text-align: left;
+  overflow: hidden;
+
+  .thumb {
+    height: 110px;
+    background: linear-gradient(135deg, #e6f7ff, #f6fbff);
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    margin: 4px 0;
+    font-size: 15px;
+    color: #0b3b3e;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    color: #555;
+    font-size: 13px;
+  }
+}
+
+/* Forms: responsive and accessible */
+.signup .container.narrow {
+  width: min(920px, 94%);
+}
+
+.company-form .form-grid {
+  display: grid;
+  /* auto-fit columns: each input tries 240px and wraps */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.company-form input,
+.company-form select,
+.contact-form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #eef2f4;
+  font-size: 14px;
+  background: #fbfdff;
+  width: 100%;
+}
+
+.company-form input:focus,
+.company-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(0, 188, 212, 0.28);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.06);
+}
+
+/* form actions: make buttons full-width on small screens */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.form-actions .btn {
+  min-width: 140px;
+}
+
+@media (max-width: 520px) {
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+/* V4 Devlabs cards */
+.devlabs .dev-grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.dev-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 12px;
+}
+
+/* Pricing */
+.price {
+  padding: 14px;
+  text-align: center;
+}
+
+.price.featured {
+  transform: scale(1.02);
+  box-shadow: 0 18px 40px rgba(12, 36, 44, 0.08);
+}
+
+/* Testimonials */
+.test-grid.tight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.test-grid blockquote {
+  padding: 14px;
+  font-size: 14px;
+}
+
+/* FAQ details */
+.faq details {
+  background: #fcfdff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* small adjustments */
+.small {
+  font-size: 12px;
+  color: #666;
+}
+
+.muted {
+  color: #777;
+}
+
+/* Accessible focus states (larger for mobile) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(0, 188, 212, 0.14);
+  outline-offset: 2px;
+}
+
+/* Responsive breakpoints - tuned for tablets & phones */
+@media (max-width: 1024px) {
+  .hero .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right .card.countdown-card {
+    margin-top: 12px;
+    align-self: center;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .pricing-grid.tight-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* smaller phones */
+@media (max-width: 520px) {
+  .container {
+    padding: 12px 0;
+  }
+
+  .hero .hero-grid {
+    gap: 12px;
+  }
+
+  .hero-left .tagline {
+    font-size: 15px;
+  }
+
+  .hero-left .logo {
+    font-size: 26px;
+  }
+
+  .countdown>div {
+    min-width: 54px;
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  .company-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .market-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Scroll reveal animations (kept as before, lightweight) */
+.section.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform 420ms cubic-bezier(.2, .9, .3, 1), opacity 420ms ease-out;
+  will-change: transform, opacity;
+}
+
+.section.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section.reveal>* {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: transform 420ms cubic-bezier(.2, .9, .3, 1), opacity 420ms ease-out;
+}
+
+.section.reveal.in-view>* {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -8,7 +8,7 @@ import { Services } from '../services/services';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule, RouterLink, Hero, About, Internships,Projects,Services],
+  imports: [RouterModule,  Hero, About,Projects,Services],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

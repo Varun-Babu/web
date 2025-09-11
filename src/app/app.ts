@@ -12,7 +12,7 @@ import { Home } from "./components/home/home";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Hero, About, Services, Projects, Internships, ContactForm, Footer, Home],
+  imports: [RouterOutlet, Navbar, Footer,],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
