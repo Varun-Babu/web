@@ -1,15 +1,22 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule,} from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button';
+import { GetStarted } from '../get-started/get-started';
 
 @Component({
   selector: 'app-internships',
-  imports: [NgFor, NgIf, MatCardModule,CommonModule,MatButtonModule],
+  imports: [MatCardModule,CommonModule,MatButtonModule,GetStarted],
   templateUrl: './internships.html',
   styleUrl: './internships.scss'
 })
 export class Internships {
+  showSignup = false;
+
+toggleSignup() {
+  this.showSignup = !this.showSignup;
+}
+
  goals = [
     { icon: '💻', title: 'Hands-on Learning', description: 'Project-first curriculum: build real apps and portfolios not just theory.' },
     { icon: '🤝', title: 'Mentorship & Industry Links', description: 'Regular mentorship from V4 and partner companies, guest talks, and internship pipelines.' },

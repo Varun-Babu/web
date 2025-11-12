@@ -1,12 +1,17 @@
 <section id="services" class="services">
   <div class="container">
-    <h2>Our Services</h2>
+    <h2>What We Offer</h2>
+
     <div class="cards">
       <div class="card" *ngFor="let service of services">
-        <div class="icon">💡</div>
+        <div class="icon" [attr.aria-hidden]="true">{{ service.icon }}</div>
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
       </div>
+    </div>
+
+    <div class="btn-container">
+      <button class="learn-more-btn" (click)="openContact()">Learn more / Partner with us</button>
     </div>
   </div>
 </section>

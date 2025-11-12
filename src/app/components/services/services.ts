@@ -10,20 +10,29 @@ import { Component } from '@angular/core';
 export class Services {
  services = [
     {
-      title: 'Internship Programs',
-      description: 'Hands-on internships with real-world project experience.'
+      icon: '🔗',
+      title: 'nextBrick — Marketplace',
+      description: 'Connect clients with vetted builders and service providers quickly and transparently.'
     },
     {
-      title: 'Web Development',
-      description: 'Custom website and application development.'
+      icon: '🧭',
+      title: 'Free Project Management',
+      description: 'A lightweight PM module for companies: task tracking, attendance, expenses, and progress dashboards — free for smaller firms.'
     },
     {
-      title: 'Mobile Apps',
-      description: 'Cross-platform mobile applications built using Flutter.'
+      icon: '🏫',
+      title: 'V4 Code Academy Hubs',
+      description: 'Campus hubs that train B.Tech students through real product work — students build features and graduate with portfolios.'
     },
     {
-      title: 'Corporate Training',
-      description: 'Technical workshops and employee upskilling sessions.'
+      icon: '📈',
+      title: 'Internships & Talent Placement',
+      description: 'Internship pipelines from hubs into live product teams and partner companies — hire engineers who can ship.'
     },
+   
   ];
+
+  openContact() {
+    window.location.href = 'mailto:contact@v4devlabs.com';
+  }
 }

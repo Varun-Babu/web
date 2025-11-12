@@ -1,0 +1,68 @@
+.get-started-page {
+  padding: 2.25rem;
+  display: flex;
+  justify-content: center;
+
+  .card-wrap {
+    width: 100%;
+    max-width: 840px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 40px rgba(16,24,40,0.06);
+    border: 1px solid rgba(15,23,42,0.04);
+  }
+
+  h2 { margin: 0 0 6px; font-size: 1.4rem; color: #0f172a; }
+  .subtitle { margin: 0 0 16px; color: #556477; font-size: 0.98rem; }
+
+  form { display: flex; flex-direction: column; gap: 12px; }
+
+  .row { display: flex; gap: 12px; }
+  .flex { flex: 1 1 0; }
+  .full { width: 100%; }
+
+  .role-block { margin-top: 6px; }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    align-items: center;
+  }
+
+  button[mat-flat-button][color="primary"] {
+    background: linear-gradient(90deg,#5c6ac4,#4b57d6);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .cancel {
+    color: #5c6ac4;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 760px) {
+    .card-wrap { padding: 1rem; }
+    .row { flex-direction: column; }
+  }
+}
+.alert {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.success {
+  background-color: #e6f9ed;
+  color: #256029;
+  border: 1px solid #b4e2c3;
+}
+
+.error {
+  background-color: #fdecea;
+  color: #a12622;
+  border: 1px solid #f5c6cb;
+}

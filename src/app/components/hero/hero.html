@@ -1,34 +1,60 @@
-<section class="hero" id="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="text-section">
-                <h1>Welcome to <span class="highlight">V4 DevLabs</span></h1>
-                <p class="subtitle">
-                    Your partner in development, innovation, and tech education.
-                </p>
-                <ul class="features">
-                    <li><i class="fas fa-check-circle"></i> Focused on real-world problems in construction & transport
-                        industries</li>
-                    <li><i class="fas fa-check-circle"></i> Build and launch innovative tech products for infrastructure
-                    </li>
-                    <li><i class="fas fa-check-circle"></i> Hands-on full-stack training with industry-grade projects
-                    </li>
-                    <li><i class="fas fa-check-circle"></i> Internships that contribute directly to live startup
-                        products</li>
-                    <li><i class="fas fa-check-circle"></i> Learn by building solutions — not just writing code</li>
-                    <li><i class="fas fa-check-circle"></i> Mentorship from professionals in both tech & civil domains
-                    </li>
-                    <li><i class="fas fa-check-circle"></i> Opportunity to join our startup teams or freelance on real
-                        work</li>
-                    <li><i class="fas fa-check-circle"></i> Supportive community of engineers, coders & creators</li>
+<section class="hero professional-hero" id="hero" role="region" aria-label="V4 DevLabs introduction">
+  <div class="container">
+    <div class="hero-grid">
 
-                </ul>
-                <button class="cta" routerLink="/products">Get Started</button>
-            </div>
+      <!-- Text content -->
+      <div class="hero-text">
+        <p class="eyebrow">Early-stage startup · Building in public</p>
+        
+        <h1 class="headline">
+          Digitising construction with <span class="em">NextBrick</span><br />
+          Redefining B.Tech learning with <span class="em">Code Academy hubs</span>.
+        </h1>
 
-            <div class="image-section">
-                <img src="assets/devlabs.png" alt="V4 DevLabs Logo" />
-            </div>
+        <p class="lede">
+          V4 DevLabs is building practical solutions for the civil & transport industries.  
+          <strong>NextBrick</strong> simplifies project tracking and connects clients with builders.  
+          <strong>Code Academy hubs</strong> train students through hands-on, real product work.
+        </p>
+
+        <div class="actions">
+          <button class="btn btn-primary" routerLink="/products/construction-manager" aria-label="Explore NextBrick product">
+            Explore NextBrick (Beta)
+          </button>
+          <button class="btn btn-outline" routerLink="/v4codeacademy" aria-label="Start a Code Academy hub">
+            Start a Hub
+          </button>
         </div>
+
+        <p class="contact-note">
+          For partnerships, pilots or mentorship: 
+          <a href="mailto:contact@v4devlabs.com">contact@v4devlabs.com</a>
+        </p>
+      </div>
+
+      <!-- Visual side -->
+      <div class="hero-side" aria-hidden="true">
+        <div class="visual-wrap">
+          <img src="assets/devlabs.png" alt="V4 DevLabs — NextBrick & Code Academy" class="hero-image" />
+          <div class="feature-cards" aria-hidden="true">
+            <div class="card">
+              <h3 class="card-title">Product-led impact</h3>
+              <p class="card-body">Practical solutions that solve real construction problems.</p>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Student-first learning</h3>
+              <p class="card-body">Hubs where students build, not just study.</p>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Industry pathways</h3>
+              <p class="card-body">Mentorship, internships, and entry into live teams.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>

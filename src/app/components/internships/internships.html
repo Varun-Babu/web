@@ -92,10 +92,12 @@
   <div class="cta-join">
     <h3>Be part of the journey</h3>
     <p class="cta-sub">Ready to start? Tell us how you want to help.</p>
-    <button mat-flat-button color="primary" >Get Started</button>
+  <button mat-flat-button color="primary" (click)="toggleSignup()">Get Started</button>
     <p class="email-note">Or email <a href="mailto:contact@v4devlabs.com">contact@v4devlabs.com</a></p>
   </div>
 </section>
+<app-get-started [hidden]="!showSignup"></app-get-started>
+
 
 <!-- 
   ========== Contact & Mentor CTA ==========

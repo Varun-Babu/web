@@ -1,0 +1,125 @@
+<div class="get-started-page">
+  <div class="card-wrap">
+    <h2>Get Started — Join V4 DevLabs</h2>
+    <p class="subtitle">Choose whether you're a student, mentor, or college partner and fill the short form.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>I'm a</mat-label>
+        <mat-select formControlName="role" (selectionChange)="onRoleChange($event)">
+          <mat-option *ngFor="let r of roles" [value]="r.value">{{ r.label }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="row">
+        <mat-form-field appearance="outline" class="flex">
+          <mat-label>Full name</mat-label>
+          <input matInput formControlName="name" placeholder="Your name" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="flex">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="you@domain.com" />
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline" class="flex">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone" placeholder="+91 98765..." />
+        </mat-form-field>
+      </div>
+
+      <!-- STUDENT fields -->
+      <div *ngIf="role === 'student'" class="role-block">
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>College</mat-label>
+          <input matInput formControlName="college" placeholder="College / University" />
+        </mat-form-field>
+
+        <div class="row">
+          <mat-form-field appearance="outline" class="flex">
+            <mat-label>Degree</mat-label>
+            <input matInput formControlName="degree" placeholder="B.Tech / Diploma" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="flex">
+            <mat-label>Year</mat-label>
+            <mat-select formControlName="year">
+              <mat-option value="1">1st year</mat-option>
+              <mat-option value="2">2nd year</mat-option>
+              <mat-option value="3">3rd year</mat-option>
+              <mat-option value="4">4th year</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Github / Portfolio (optional)</mat-label>
+          <input matInput formControlName="github" placeholder="https://github.com/..." />
+        </mat-form-field>
+      </div>
+
+      <!-- MENTOR fields -->
+      <div *ngIf="role === 'mentor'" class="role-block">
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Company / Organisation</mat-label>
+          <input matInput formControlName="company" placeholder="Your org" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Areas of expertise</mat-label>
+          <input matInput formControlName="expertise" placeholder="E.g. React, Construction tech, PM" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Availability</mat-label>
+          <input matInput formControlName="availability" placeholder="e.g. Weekly 2 hrs / Ad-hoc" />
+        </mat-form-field>
+      </div>
+
+      <!-- PARTNER fields -->
+      <div *ngIf="role === 'partner'" class="role-block">
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Institution / Company name</mat-label>
+          <input matInput formControlName="institutionName" placeholder="College or partner name" />
+        </mat-form-field>
+
+        <div class="row">
+          <mat-form-field appearance="outline" class="flex">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" placeholder="City" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="flex">
+            <mat-label>Approx. capacity</mat-label>
+            <input matInput formControlName="capacity" placeholder="No. of students / teams" />
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Message (optional)</mat-label>
+          <textarea matInput formControlName="message" rows="3" placeholder="Tell us what you're interested in"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="actions">
+  <button mat-flat-button color="primary" type="submit" [disabled]="submitting">
+    {{ submitting ? 'Sending...' : 'Send' }}
+  </button>
+  <!-- <a class="cancel" routerLink="/v4devlabs" role="link">Cancel</a> -->
+</div>
+
+<!-- Success / Error Messages -->
+<div *ngIf="success" class="alert success">
+  ✅ Successfully submitted!
+</div>
+<div *ngIf="error" class="alert error">
+  ❌ Something went wrong. Please try again.
+</div>
+
+    </form>
+  </div>
+</div>
